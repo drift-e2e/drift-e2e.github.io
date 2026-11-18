@@ -37,7 +37,7 @@
     .group-row td { background:#fafbfd; font-weight:700; text-align:left; }
     .ours { font-weight:700; }
     .note { color:var(--muted); font-size:.9rem; }
-    footer { border-top:1px solid var(--line); padding-top:20px; color:var(--muted); font-size:.9rem; }
+    footer { border-top:1px solid var(--line); padding-top:20px; color:var(--muted); font-size:.9rem; text-align:center; }
     @media (max-width:640px) { main { width:min(100% - 28px,1100px); padding-top:34px; } header { margin-bottom:30px; } section { margin:34px 0; } }
   </style>
 </head>
@@ -66,7 +66,7 @@
   <section id="results">
     <h2>Results</h2>
 
-    <h3>Bench2Drive: closed-loop driving performance (Table 1)</h3>
+    <h3>Bench2Drive: closed-loop driving performance</h3>
     <div class="table-wrap"><table>
       <thead><tr><th>Method</th><th>Parameters</th><th>Frames</th><th>DS ↑</th><th>SR (%) ↑</th></tr></thead>
       <tbody>
@@ -91,7 +91,7 @@
     </table></div>
     <p class="note">DRIFT results are mean ± standard deviation over three closed-loop runs. DRIFT w/ LM uses a reasoning rate of 2. The paper notes that training data sizes differ across methods, so the numbers are not strictly comparable.</p>
 
-    <h3>Language evaluation (Table 2)</h3>
+    <h3>Language evaluation</h3>
     <div class="table-wrap"><table>
       <thead><tr><th>Dataset</th><th>Model</th><th>BLEU-4 ↑</th><th>SPICE ↑</th><th>CIDEr ↑</th><th>ROUGE-L ↑</th><th>METEOR ↑</th></tr></thead>
       <tbody>
@@ -102,7 +102,7 @@
       </tbody>
     </table></div>
 
-    <h3>Real-world benchmarks (Table 5)</h3>
+    <h3>Real-world benchmarks</h3>
     <div class="table-wrap"><table>
       <thead><tr><th>Method</th><th>Parameters</th><th>PDMS ↑</th><th>EPDMS ↑</th><th>AlpaSim score ↑</th></tr></thead>
       <tbody>
@@ -129,6 +129,9 @@
     </figure>
   </section>
   
+  <footer>
+    <p>DRIFT: Detachable Reasoning for Runtime-Flexible and Efficient End-to-End Driving</p>
+  </footer>
 </main>
 </body>
 </html>
