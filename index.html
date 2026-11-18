@@ -1,12 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DRIFT: Detachable Reasoning for Runtime-Flexible and Efficient End-to-End Driving</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="DRIFT: Detachable Reasoning for Runtime-Flexible and Efficient End-to-End Driving.">
+  <title>DRIFT: Detachable Reasoning for Runtime-Flexible and Efficient End-to-End Driving</title>
+  <style>
+    :root { --ink:#20242a; --muted:#606975; --line:#dce1e7; --accent:#2457a6; --paper:#fff; --soft:#f5f7fa; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { width:min(1100px, calc(100% - 40px)); margin:0 auto; padding:56px 0 80px; }
+    header { text-align:center; margin-bottom:42px; }
+    h1 { max-width:950px; margin:0 auto 22px; font-size:clamp(2rem,4vw,3rem); line-height:1.15; letter-spacing:-.035em; }
+    .authors { font-size:1.08rem; margin:0 0 5px; }
+    .affiliations,.emails { color:var(--muted); margin:0; }
+    .project-link { margin-top:15px; }
+    a { color:var(--accent); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    section { margin:42px 0; }
+    h2 { font-size:1.65rem; line-height:1.25; margin:0 0 16px; letter-spacing:-.02em; }
+    h3 { font-size:1.15rem; margin:28px 0 10px; }
+    p { margin:0 0 14px; }
+    .teaser { margin:34px auto 0; }
+    .image-placeholder { min-height:250px; display:flex; align-items:center; justify-content:center; border:2px dashed #b9c2ce; border-radius:10px; background:var(--soft); color:var(--muted); text-align:center; padding:24px; }
+    .image-placeholder small { display:block; margin-top:5px; }
+    figure { margin:0; }
+    figcaption { color:var(--muted); font-size:.9rem; text-align:center; margin-top:8px; }
+    .table-wrap { overflow-x:auto; margin:14px 0 26px; border:1px solid var(--line); border-radius:8px; }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; white-space:nowrap; }
+    th,td { padding:9px 12px; border-bottom:1px solid var(--line); text-align:right; }
+    th { background:var(--soft); font-weight:650; }
+    th:first-child,td:first-child { text-align:left; }
+    tr:last-child td { border-bottom:0; }
+    .group-row td { background:#fafbfd; font-weight:700; text-align:left; }
+    .ours { font-weight:700; }
+    .note { color:var(--muted); font-size:.9rem; }
+    footer { border-top:1px solid var(--line); padding-top:20px; color:var(--muted); font-size:.9rem; }
+    @media (max-width:640px) { main { width:min(100% - 28px,1100px); padding-top:34px; } header { margin-bottom:30px; } section { margin:34px 0; } }
+  </style>
 </head>
 <body>
-    <h1>Project Page</h1>
-    <p>Project website coming soon.</p>
+<main>
+  <header>
+    <h1>DRIFT: Detachable Reasoning for Runtime-Flexible and Efficient End-to-End Driving</h1>
+    <p class="authors">First Author<sup>1,*</sup> &nbsp; Second Author<sup>1,*</sup> &nbsp; Third Author<sup>2</sup></p>
+    <p class="affiliations"><sup>1</sup> Institution1 &nbsp;&nbsp; <sup>2</sup> Institution2</p>
+    <p class="emails">{first,second}@i1.org, third@i2.org</p>
+    <p class="project-link"><a href="https://drift-e2e.github.io/">Project page</a></p>
+    <p class="note">* Equal contribution.</p>
+  </header>
+
+  <section id="abstract">
+    <h2>Abstract</h2>
+    <p>The integration of vision-language models (VLMs) into end-to-end (E2E) autonomous driving has demonstrated strong potential by providing scene description and reasoning capabilities. However, VLMs are computationally expensive, and switching language reasoning on and off at runtime without hurting closed-loop performance has not been demonstrated, which hinders practical adoption. To address these issues, we propose DRIFT, an E2E autonomous driving framework that integrates a lightweight language model (LM) for visual question answering and action commentary. By efficiently projecting intermediate driving representations into the language embedding space, we demonstrate that a compact LM (&lt;150M parameters) can achieve strong scene description and action commentary. Furthermore, we introduce a runtime-flexible planning module that is trained on surrogate reasoning features distilled from the LM and can be conditioned on either the LM or the surrogate reasoning features at inference. This design enables bypassing the LM entirely when required by deployment constraints, without sacrificing driving performance. With only 255M parameters, DRIFT reaches up to a Driving Score (DS) of 97.03 and a Success Rate of 89.39% (mean over three runs) on Bench2Drive by interleaving its LM and surrogate reasoning at a chosen reasoning rate. This is on par with the strongest non-language models while being far more compact than existing VLM-based models. DRIFT further achieves competitive results on the real-world NAVSIM and AlpaSim benchmarks at significantly lower computational cost than existing VLM-based approaches.</p>
+  </section>
+
+  <section id="teaser">
+    <h2>Overview</h2>
+    <figure>
+      <div class="image-placeholder">Project overview image placeholder<small>Replace this block with the paper's overview figure, e.g. &lt;img src="assets/overview.png" alt="DRIFT architecture and qualitative results"&gt;.</small></div>
+      <figcaption>Overview of the DRIFT architecture and qualitative driving results (paper, Figure 1).</figcaption>
+    </figure>
+  </section>
+
+  <section id="results">
+    <h2>Results</h2>
+
+    <h3>Bench2Drive: closed-loop driving performance (Table 1)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Method</th><th>Parameters</th><th>Frames</th><th>DS ↑</th><th>SR (%) ↑</th></tr></thead>
+      <tbody>
+        <tr class="group-row"><td colspan="5">Language-based models</td></tr>
+        <tr><td>DriveMoE [39]</td><td>3B</td><td>234K</td><td>74.22</td><td>48.64</td></tr>
+        <tr><td>ETA [10]</td><td>7B</td><td>234K</td><td>74.33±0.96</td><td>48.33±3.56</td></tr>
+        <tr><td>VLR-Driver [17]</td><td>8.1B</td><td>234K</td><td>75.01</td><td>50.00</td></tr>
+        <tr><td>ORION [8]</td><td>7B</td><td>234K</td><td>77.74</td><td>54.62</td></tr>
+        <tr><td>SpaceDrive+ [19]</td><td>7.4B</td><td>–</td><td>78.02</td><td>55.11</td></tr>
+        <tr><td>AutoVLA [45]</td><td>3B</td><td>600K</td><td>78.84</td><td>57.73</td></tr>
+        <tr><td>MindDrive-L [9]</td><td>3B</td><td>234K</td><td>80.59</td><td>58.26</td></tr>
+        <tr><td>SimLingo [31]</td><td>1B</td><td>3.1M</td><td>85.07±0.95</td><td>67.27±2.11</td></tr>
+        <tr><td>VLADriver-RAG [42]</td><td>–</td><td>234K</td><td>89.12</td><td>70.42</td></tr>
+        <tr><td>LinkVLA [35]</td><td>1B</td><td>–</td><td>91.01</td><td>74.55</td></tr>
+        <tr class="group-row"><td colspan="5">Non-language models</td></tr>
+        <tr><td>SimLingo-BASE [31]</td><td>355M</td><td>3.1M</td><td>85.94</td><td>66.82</td></tr>
+        <tr><td>TFv6 [27]</td><td>126M</td><td>1M</td><td>95.2±0.3</td><td>86.8±0.7</td></tr>
+        <tr><td>BridgeDrive [23]</td><td>–</td><td>1M</td><td>96.34±0.55</td><td>89.25±0.50</td></tr>
+        <tr class="ours"><td>DRIFT w/o LM</td><td>120M</td><td>1M</td><td>95.97±0.65</td><td>86.52±1.60</td></tr>
+        <tr class="ours"><td>DRIFT w/ LM</td><td>255M</td><td>1M</td><td>97.03±0.09</td><td>89.39±0.95</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">DRIFT results are mean ± standard deviation over three closed-loop runs. DRIFT w/ LM uses a reasoning rate of 2. The paper notes that training data sizes differ across methods, so the numbers are not strictly comparable.</p>
+
+    <h3>Language evaluation (Table 2)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Dataset</th><th>Model</th><th>BLEU-4 ↑</th><th>SPICE ↑</th><th>CIDEr ↑</th><th>ROUGE-L ↑</th><th>METEOR ↑</th></tr></thead>
+      <tbody>
+        <tr><td>DriveLM-CARLA</td><td>DriveLM-CARLA (LLaMA-7B)</td><td>–</td><td>72.71</td><td>1.15</td><td>71.20</td><td>–</td></tr>
+        <tr><td>DriveLM-CARLA</td><td>SimLingo (Qwen2-0.5B)</td><td>72.07</td><td>87.24</td><td>7.08</td><td>84.77</td><td>50.57</td></tr>
+        <tr class="ours"><td>DriveLM-CARLA</td><td>Ours (SmolLM2-135M)</td><td>72.63</td><td>85.56</td><td>6.96</td><td>84.59</td><td>50.08</td></tr>
+        <tr class="ours"><td>Commentary</td><td>Ours (SmolLM2-135M)</td><td>83.90</td><td>82.20</td><td>6.93</td><td>89.10</td><td>57.01</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Real-world benchmarks (Table 5)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Method</th><th>Parameters</th><th>PDMS ↑</th><th>EPDMS ↑</th><th>AlpaSim score ↑</th></tr></thead>
+      <tbody>
+        <tr><td>FSDrive [40]</td><td>2B</td><td>85.1</td><td>–</td><td>–</td></tr>
+        <tr><td>AdaThinkDrive [25]</td><td>8B</td><td>86.2</td><td>–</td><td>–</td></tr>
+        <tr><td>FLARE [37]</td><td>4B</td><td>86.9</td><td>–</td><td>–</td></tr>
+        <tr><td>SGDrive [18]</td><td>2B</td><td>87.4</td><td>27.1</td><td>–</td></tr>
+        <tr><td>Qwen-Drive-1.0, SFT [44]</td><td>4B</td><td>87.9</td><td>30.5</td><td>91.7</td></tr>
+        <tr><td>LTFv6 (reported) [27]</td><td>69M</td><td>85.4</td><td>28.3</td><td>–</td></tr>
+        <tr><td>LTFv6 RegNetY-032‡</td><td>117M</td><td>87.0</td><td>30.2</td><td>88.6</td></tr>
+        <tr class="ours"><td>DRIFT w/o LM‡</td><td>125M</td><td>87.4</td><td>32.5</td><td>89.5</td></tr>
+        <tr class="ours"><td>DRIFT w/ LM‡</td><td>260M</td><td>87.3</td><td>32.8</td><td>89.5</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">PDMS is reported on NAVSIM navtest; EPDMS on NAVSIM navhard; AlpaSim score is on the nuPlan track. ‡ Test-time heading post-processing is applied. Table 5 reports 260M parameters for DRIFT w/ LM.</p>
+
+  </section>
+
+  <footer>
+    <p>Content on this page is transcribed from the supplied DRIFT paper. Author names, affiliations and email addresses appear as placeholders in the supplied PDF and have therefore been retained as placeholders.</p>
+  </footer>
+</main>
 </body>
 </html>
