@@ -26,6 +26,7 @@
     .image-placeholder { min-height:250px; display:flex; align-items:center; justify-content:center; border:2px dashed #b9c2ce; border-radius:10px; background:var(--soft); color:var(--muted); text-align:center; padding:24px; }
     .image-placeholder small { display:block; margin-top:5px; }
     figure { margin:0; }
+    figure img { display:block; width:100%; height:auto; }
     figcaption { color:var(--muted); font-size:.9rem; text-align:center; margin-top:8px; }
     .table-wrap { overflow-x:auto; margin:14px 0 26px; border:1px solid var(--line); border-radius:8px; }
     table { width:100%; border-collapse:collapse; font-size:.92rem; white-space:nowrap; }
@@ -44,11 +45,10 @@
 <main>
   <header>
     <h1>DRIFT: Detachable Reasoning for Runtime-Flexible and Efficient End-to-End Driving</h1>
-    <p class="authors">First Author<sup>1,*</sup> &nbsp; Second Author<sup>1,*</sup> &nbsp; Third Author<sup>2</sup></p>
-    <p class="affiliations"><sup>1</sup> Institution1 &nbsp;&nbsp; <sup>2</sup> Institution2</p>
-    <p class="emails">{first,second}@i1.org, third@i2.org</p>
-    <p class="project-link"><a href="https://drift-e2e.github.io/">Project page</a></p>
-    <p class="note">* Equal contribution.</p>
+    <p class="authors">Emad Aghajanzadeh<sup>1,2,*</sup>, Bethany Anne Wong<sup>1,2,*†</sup>, Leonhard Kunze<sup>1,2,†</sup>, Moritz Thoma<sup>2</sup><br>Maximilian Forstenhäusler<sup>2,3</sup>, Nael Fasfous<sup>2,†</sup>, Manoj Rohit Vemparala<sup>2</sup>, Pierpaolo Mori<sup>2</sup><br>Christos Anagnostopoulos<sup>3</sup>, Daniel Mueller-Gritschneder<sup>4</sup>, Ulf Schlichtmann<sup>1</sup></p>
+    <p class="affiliations"><sup>1</sup>Technical University of Munich &nbsp; <sup>2</sup>BMW Group &nbsp; <sup>3</sup>University of Glasgow &nbsp; <sup>4</sup>TU Wien</p>
+    <p class="emails">{firstname.lastname}@{<sup>1</sup>tum.de, <sup>2</sup>bmw.de, <sup>3</sup>glasgow.ac.uk, <sup>4</sup>tuwien.ac.at}</p>
+    <p class="note">* Equal contribution. <br>† Employed at BMW at time of submission.</p>
   </header>
 
   <section id="abstract">
@@ -59,8 +59,16 @@
   <section id="teaser">
     <h2>Overview</h2>
     <figure>
-      <div class="image-placeholder">Project overview image placeholder<small>Replace this block with the paper's overview figure, e.g. &lt;img src="assets/overview.png" alt="DRIFT architecture and qualitative results"&gt;.</small></div>
-      <figcaption>Overview of the DRIFT architecture and qualitative driving results (paper, Figure 1).</figcaption>
+      <a href="figures/main_fig_2.png"><img src="figures/main_fig_2.png" alt="DRIFT architecture: a backbone feeds a planner, with a language model that can be attached or detached at runtime and a surrogate reasoning projection that replaces it." width="2565" height="1002"></a>
+      <figcaption>Overview of the DRIFT architecture. The language model can be attached or detached at runtime; the planner is conditioned on either the LM reasoning features or the surrogate reasoning features.</figcaption>
+    </figure>
+  </section>
+
+  <section id="examples">
+    <h2>Examples</h2>
+    <figure>
+      <a href="figures/examples.png"><img src="figures/examples.png" alt="Example visual question answering and action commentary on NAVSIM and CARLA scenes." width="1732" height="920"></a>
+      <figcaption>Example questions and answers on NAVSIM (left) and CARLA (right).</figcaption>
     </figure>
   </section>
 
@@ -123,7 +131,7 @@
   </section>
 
   <footer>
-    <p>Content on this page is transcribed from the supplied DRIFT paper. Author names, affiliations and email addresses appear as placeholders in the supplied PDF and have therefore been retained as placeholders.</p>
+    <p>Content on this page is transcribed from the DRIFT paper.</p>
   </footer>
 </main>
 </body>
