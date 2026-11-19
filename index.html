@@ -115,7 +115,7 @@
         <tr class="ours"><td>DRIFT w/ LM</td><td>255M</td><td>1M</td><td>97.03±0.09</td><td>89.39±0.95</td></tr>
       </tbody>
     </table></div>
-    <p class="note">DRIFT results are mean ± standard deviation over three closed-loop runs. DRIFT w/ LM uses a reasoning rate of 2. The paper notes that training data sizes differ across methods, so the numbers are not strictly comparable.</p>
+    <p class="note">DRIFT results are mean ± standard deviation over three closed-loop runs. DRIFT w/ LM uses a reasoning rate of 2.</p>
   </section>
 
   <section id="language">
@@ -147,7 +147,7 @@
         <tr class="ours"><td>DRIFT w/ LM‡</td><td>260M</td><td>87.3</td><td>32.8</td><td>89.5</td></tr>
       </tbody>
     </table></div>
-    <p class="note">PDMS is reported on NAVSIM navtest; EPDMS on NAVSIM navhard; AlpaSim score is on the nuPlan track. ‡ Test-time heading post-processing is applied. Table 5 reports 260M parameters for DRIFT w/ LM.</p>
+    <p class="note">PDMS is reported on NAVSIM navtest; EPDMS on NAVSIM navhard; AlpaSim score is on the nuPlan track. ‡ Test-time heading post-processing is applied.</p>
   </section>
 
   <section id="reasoning-rate">
@@ -168,7 +168,7 @@
     <p class="desc">DRIFT-Base barely detects the crossing pedestrian, whereas after VQA pre-training the pedestrian is clearly grounded. This gain appears where expected: in scenarios with vulnerable road users, DS rises from 94.13 to 97.75 and pedestrian collisions drop from 7 to 2 (overall DS 95.45 → 95.94, a modest gain given the run-to-run variance). The LM of the VQA pre-trained variant has been finetuned on driving VQA for only 2 epochs and still answers “accelerate”. Adding joint commentary training sharpens the reasoning (“remain stopped due to the pedestrian”) and raises the commentary SPICE from 76.90 to 82.20, at no cost for the surrogate path (95.97 vs. 95.94 DS).</p>
   </section>
 
-  <section id="examples">
+  <section id="VQA and Reasoning Examples">
     <h2>Examples</h2>
     <figure>
       <a href="figures/examples.png"><img src="figures/examples.png" alt="Example visual question answering and action commentary on NAVSIM and CARLA scenes." width="1732" height="920"></a>
