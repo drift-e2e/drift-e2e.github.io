@@ -10,16 +10,24 @@
     * { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body { margin:0; color:var(--ink); background:var(--paper); font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
-    main { width:min(940px, calc(100% - 40px)); margin:0 auto; padding:48px 0 64px; }
+    main { --pad:max(20px, calc((100% - 940px) / 2)); }
+    .hero, section, footer { padding-left:var(--pad); padding-right:var(--pad); }
+    .hero { padding-top:48px; padding-bottom:48px; }
     header { text-align:center; margin-bottom:42px; }
     h1 { max-width:820px; margin:0 auto 20px; font-size:clamp(1.6rem,3.2vw,2.3rem); line-height:1.2; letter-spacing:-.03em; }
     .authors { font-size:1rem; line-height:1.6; margin:0 0 8px; }
     .affiliations,.emails { color:var(--muted); margin:0; }
     .project-link { margin-top:15px; }
+    .buttons { display:flex; justify-content:center; gap:10px; margin-top:18px; }
+    .btn { display:inline-flex; align-items:center; gap:7px; padding:7px 18px; border-radius:999px; background:#2b2f36; color:#fff; font-size:.88rem; font-weight:600; cursor:pointer; }
+    .btn:hover { background:var(--accent); text-decoration:none; }
+    .demo { max-width:820px; margin:0 auto; }
+    .demo video { display:block; width:100%; height:auto; aspect-ratio:16/9; background:#000; border-radius:8px; }
     a { color:var(--accent); text-decoration:none; }
     a:hover { text-decoration:underline; }
-    section { margin:34px 0; }
-    h2 { font-size:1.35rem; line-height:1.25; margin:0 0 14px; letter-spacing:-.02em; }
+    section { margin:0; padding-top:44px; padding-bottom:44px; }
+    section:nth-of-type(odd) { background:var(--soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    h2 { font-size:1.35rem; line-height:1.25; margin:0 0 14px; letter-spacing:-.02em; text-align:center; }
     h3 { font-size:1rem; margin:26px 0 10px; text-align:center; }
     p { margin:0 0 12px; }
     #abstract p { font-size:.95rem; text-align:justify; hyphens:auto; }
@@ -30,28 +38,43 @@
     figure img { display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:8px; }
     #examples figure { max-width:680px; margin:0 auto; }
     figcaption { color:var(--muted); font-size:.9rem; text-align:center; margin-top:8px; }
-    .table-wrap { overflow-x:auto; width:fit-content; max-width:100%; margin:12px auto 20px; border:1px solid var(--line); border-radius:8px; }
+    .table-wrap { overflow-x:auto; width:fit-content; max-width:100%; margin:12px auto 20px; background:#fff; border:1px solid var(--line); border-radius:8px; }
     table { border-collapse:collapse; font-size:.82rem; white-space:nowrap; }
     th,td { padding:6px 10px; border-bottom:1px solid var(--line); text-align:right; }
-    th { background:var(--soft); font-weight:650; }
+    th { background:#eef1f5; font-weight:650; }
     th:first-child,td:first-child { text-align:left; }
     tr:last-child td { border-bottom:0; }
     .group-row td { background:#fafbfd; font-weight:700; text-align:left; }
     .ours { font-weight:700; }
     .note { color:var(--muted); font-size:.85rem; }
-    #results .note { max-width:780px; margin:0 auto 12px; text-align:center; }
-    footer { border-top:1px solid var(--line); padding-top:20px; color:var(--muted); font-size:.9rem; text-align:center; }
-    @media (max-width:640px) { main { width:min(100% - 28px,1100px); padding-top:34px; } header { margin-bottom:30px; } section { margin:34px 0; } }
+    section .note { max-width:780px; margin:0 auto 12px; text-align:center; }
+    footer { padding-top:26px; padding-bottom:30px; color:var(--muted); font-size:.9rem; text-align:center; }
+    footer p { margin:0; }
+    @media (max-width:640px) { main { --pad:14px; } .hero { padding-top:34px; } header { margin-bottom:30px; } section { padding-top:34px; padding-bottom:34px; } }
   </style>
 </head>
 <body>
 <main>
+  <div class="hero">
   <header>
     <h1>DRIFT: Detachable Reasoning for Runtime-Flexible and Efficient End-to-End Driving</h1>
     <p class="authors">Emad Aghajanzadeh<sup>1,2,*</sup>, Bethany Anne Wong<sup>1,2,*†</sup>, Leonhard Kunze<sup>1,2,†</sup>, Moritz Thoma<sup>2</sup><br>Maximilian Forstenhäusler<sup>2,3</sup>, Nael Fasfous<sup>2,†</sup>, Manoj Rohit Vemparala<sup>2</sup>, Pierpaolo Mori<sup>2</sup><br>Christos Anagnostopoulos<sup>3</sup>, Daniel Mueller-Gritschneder<sup>4</sup>, Ulf Schlichtmann<sup>1</sup></p>
     <p class="affiliations"><sup>1</sup>Technical University of Munich &nbsp; <sup>2</sup>BMW Group &nbsp; <sup>3</sup>University of Glasgow &nbsp; <sup>4</sup>TU Wien</p>
     <p class="note">* Equal contribution. † Employed at BMW at time of submission.</p>
+    <div class="buttons">
+      <!-- Add href="..." to the Paper link once the paper is available -->
+      <a class="btn"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm7 1.5V9h5.5L13 3.5z"/></svg>Paper</a>
+    </div>
   </header>
+
+  <figure class="demo">
+    <video controls preload="metadata" playsinline>
+      <source src="figures/DRIFT_Demo_Carla.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <figcaption>Demonstration video of <strong>DRIFT</strong> in CARLA.</figcaption>
+  </figure>
+  </div>
 
   <section id="abstract">
     <h2>Abstract</h2>
@@ -66,10 +89,8 @@
     </figure>
   </section>
 
-  <section id="results">
-    <h2>Results</h2>
-
-    <h3>Bench2Drive: closed-loop driving performance</h3>
+  <section id="bench2drive">
+    <h2>Bench2Drive: Closed-Loop Driving Performance</h2>
     <div class="table-wrap"><table>
       <thead><tr><th>Method</th><th>Parameters</th><th>Frames</th><th>DS ↑</th><th>SR (%) ↑</th></tr></thead>
       <tbody>
@@ -93,8 +114,10 @@
       </tbody>
     </table></div>
     <p class="note">DRIFT results are mean ± standard deviation over three closed-loop runs. DRIFT w/ LM uses a reasoning rate of 2. The paper notes that training data sizes differ across methods, so the numbers are not strictly comparable.</p>
+  </section>
 
-    <h3>Language evaluation</h3>
+  <section id="language">
+    <h2>Language Evaluation</h2>
     <div class="table-wrap"><table>
       <thead><tr><th>Dataset</th><th>Model</th><th>BLEU-4 ↑</th><th>SPICE ↑</th><th>CIDEr ↑</th><th>ROUGE-L ↑</th><th>METEOR ↑</th></tr></thead>
       <tbody>
@@ -104,8 +127,10 @@
         <tr class="ours"><td>Commentary</td><td>Ours (SmolLM2-135M)</td><td>83.90</td><td>82.20</td><td>6.93</td><td>89.10</td><td>57.01</td></tr>
       </tbody>
     </table></div>
+  </section>
 
-    <h3>Real-world benchmarks</h3>
+  <section id="real-world">
+    <h2>Real-World Benchmarks</h2>
     <div class="table-wrap"><table>
       <thead><tr><th>Method</th><th>Parameters</th><th>PDMS ↑</th><th>EPDMS ↑</th><th>AlpaSim score ↑</th></tr></thead>
       <tbody>
@@ -121,10 +146,9 @@
       </tbody>
     </table></div>
     <p class="note">PDMS is reported on NAVSIM navtest; EPDMS on NAVSIM navhard; AlpaSim score is on the nuPlan track. ‡ Test-time heading post-processing is applied. Table 5 reports 260M parameters for DRIFT w/ LM.</p>
-
   </section>
 
-    <section id="examples">
+  <section id="examples">
     <h2>Examples</h2>
     <figure>
       <a href="figures/examples.png"><img src="figures/examples.png" alt="Example visual question answering and action commentary on NAVSIM and CARLA scenes." width="1732" height="920"></a>
